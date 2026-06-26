@@ -4,16 +4,18 @@ import json
 from services.topic_generator import generate_starters
 from services.history_logger import save_history
 from services.fact_checker import fact_check
+from services.feedback_logger import save_feedback
 
 st.title("🤝 Personalized Networking Assistant")
 
 st.write("Generate smart conversation starters for networking events.")
 
-# -----------------------------
-# Conversation Starter Section
-# -----------------------------
+# -----------------------------------
+# Conversation Starter
+# -----------------------------------
 
 event = st.text_area("Event Description")
+
 interests = st.text_input("Your Interests")
 
 if st.button("Generate"):
@@ -27,9 +29,9 @@ if st.button("Generate"):
     for starter in starters:
         st.write("•", starter)
 
-# -----------------------------
+# -----------------------------------
 # Conversation History
-# -----------------------------
+# -----------------------------------
 
 st.subheader("📜 Conversation History")
 
@@ -41,9 +43,9 @@ for item in history:
     st.write(f"**Interests:** {item['interests']}")
     st.write("---")
 
-# -----------------------------
+# -----------------------------------
 # Wikipedia Fact Checker
-# -----------------------------
+# -----------------------------------
 
 st.subheader("📚 Wikipedia Fact Checker")
 
@@ -52,3 +54,21 @@ topic = st.text_input("Enter a topic")
 if st.button("Fact Check"):
     result = fact_check(topic)
     st.write(result)
+
+# -----------------------------------
+# Feedback Section
+# -----------------------------------
+
+st.subheader("⭐ Feedback")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    if st.button("👍 Helpful"):
+        save_feedback("Helpful")
+        st.success("Thanks for your feedback!")
+
+with col2:
+    if st.button("👎 Not Helpful"):
+        save_feedback("Not Helpful")
+        st.success("Thanks for your feedback!")
