@@ -6,5 +6,9 @@
     {
         "event": "Google Cloud Summit",
         "interests": "Artificial Intelligence"
+    },
+    {
+        "event": "AI Conference",
+        "interests": "Cloud Computing"
     }
 ]
