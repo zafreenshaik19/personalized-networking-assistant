@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "event": "AI Conference",
+        "interests": "Machine Learning"
+    },
+    {
+        "event": "Google Cloud Summit",
+        "interests": "Artificial Intelligence"
+    }
+]
